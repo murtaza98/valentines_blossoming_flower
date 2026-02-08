@@ -87,28 +87,109 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
   function yes() {
-    if (counter >= 3) {
-        let model = document.getElementById("model2");
-        let model2 = document.getElementById("model");
-        let sadMusic = document.getElementById("sadMusic");
-        sadMusic.pause();
-        model2.style.display = "none";
-        let happyMusic = document.getElementById("happyMusic");
-        happyMusic.play();
-        model.style.display = "none";
-        setTimeout(() => {
-            model.style.display = "flex";
-        }, 100);
-        const wedate = document.getElementById("wedate");
-        const btns = document.getElementById("btns");
-        btns.style.display = "none";
-        wedate.innerText = "We are each other's valentine now.❤️😘";
+    let model = document.getElementById("model");
+    let sadMusic = document.getElementById("sadMusic");
+    sadMusic.pause();
+    model.style.display = "none";
+    
+    // Show terms and conditions modal
+    let termsModel = document.getElementById("termsModel");
+    setTimeout(() => {
+        termsModel.style.display = "flex";
+        // Reset all checkboxes
+        document.getElementById("term1").checked = false;
+        document.getElementById("term2").checked = false;
+        document.getElementById("term3").checked = false;
+        document.getElementById("term4").checked = false;
+        checkAllTerms();
+    }, 100);
+}
 
-        // Open index1.html in a new tab
-        window.open("index1.html", "_blank");
-
+function checkAllTerms() {
+    const term1 = document.getElementById("term1").checked;
+    const term2 = document.getElementById("term2").checked;
+    const term3 = document.getElementById("term3").checked;
+    const term4 = document.getElementById("term4").checked;
+    
+    const acceptButton = document.getElementById("acceptTerms");
+    const hint = document.getElementById("termsHint");
+    
+    if (term1 && term2 && term3 && term4) {
+        acceptButton.disabled = false;
+        hint.textContent = "Perfect! You're ready to proceed! 💖✨";
+        hint.style.color = "#ff4f99";
+        hint.style.fontWeight = "600";
     } else {
-        alert("Don't say yes right away, Sakina. Play around a bit 😉😘");
+        acceptButton.disabled = true;
+        const checkedCount = [term1, term2, term3, term4].filter(Boolean).length;
+        hint.textContent = `Check all boxes to proceed! (${checkedCount}/4 checked) 😉`;
+        hint.style.color = "#999";
+        hint.style.fontWeight = "400";
+    }
+}
+
+function spawnHearts(button) {
+    const hearts = ["❤️", "💖", "💕", "💗", "💓", "💘", "💝", "🌹", "✨", "💫"];
+    const rect = button.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    for (let i = 0; i < 25; i++) {
+        const heart = document.createElement("span");
+        heart.className = "heart-particle";
+        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = centerX + "px";
+        heart.style.top = centerY + "px";
+        heart.style.fontSize = (16 + Math.random() * 20) + "px";
+
+        const angle = (Math.PI * 2 * i) / 25;
+        const distance = 80 + Math.random() * 120;
+        heart.style.setProperty("--x", Math.cos(angle) * distance + "px");
+        heart.style.setProperty("--y", Math.sin(angle) * distance + "px");
+        heart.style.animationDelay = (Math.random() * 0.3) + "s";
+
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 2000);
+    }
+}
+
+function acceptTerms() {
+    const term1 = document.getElementById("term1").checked;
+    const term2 = document.getElementById("term2").checked;
+    const term3 = document.getElementById("term3").checked;
+    const term4 = document.getElementById("term4").checked;
+    
+    if (term1 && term2 && term3 && term4) {
+        const button = document.getElementById("acceptTerms");
+        
+        // Explode hearts from the button!
+        spawnHearts(button);
+        
+        // Delay the transition so she sees the hearts
+        setTimeout(() => {
+            // Hide terms modal
+            let termsModel = document.getElementById("termsModel");
+            termsModel.style.display = "none";
+            
+            // Show success modal
+            let model = document.getElementById("model2");
+            let happyMusic = document.getElementById("happyMusic");
+            happyMusic.play();
+            
+            setTimeout(() => {
+                model.style.display = "flex";
+            }, 100);
+            
+            const wedate = document.getElementById("wedate");
+            const btns = document.getElementById("btns");
+            btns.style.display = "none";
+            wedate.innerText = "We are each other's valentine now. I love you Sakina. ❤️😘";
+
+            // Open index1.html in a new tab
+            setTimeout(() => {
+                window.open("index1.html", "_blank");
+            }, 500);
+        }, 1200);
     }
 }
 

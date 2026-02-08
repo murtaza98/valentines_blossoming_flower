@@ -73,7 +73,7 @@
         Your browser does not support the audio element.
       </audio>
       <div class="model-content">
-        <p class="modelText" id="modelText2">I Love you 😘😘</p>
+        <p class="modelText" id="modelText2">You're My Valentine Now 🥰</p>
         <img
           class="modelImg"
           id="modelImg2"
@@ -87,7 +87,7 @@
           onmouseleave="normal()"
           onclick="ly2()"
         >
-          Love You Too 🥰
+          Yes, I'm Your Valentine 🥰
         </button>
       </div>
     </div>
@@ -125,6 +125,40 @@
             No 😭
           </button>
         </div>
+      </div>
+    </div>
+
+    <div id="termsModel" class="model">
+      <div class="model-content terms-content">
+        <h2 class="terms-title">💕 Terms & Conditions 💕</h2>
+        <p class="terms-subtitle">Before we become valentines, you must agree to these fun terms! 😊</p>
+        <div class="terms-list">
+          <label class="term-item">
+            <input type="checkbox" class="term-checkbox" id="term1" onchange="checkAllTerms()">
+            <span class="term-text">✨ I promise to maintain weight below 55kg 💪</span>
+          </label>
+          <label class="term-item">
+            <input type="checkbox" class="term-checkbox" id="term2" onchange="checkAllTerms()">
+            <span class="term-text">📸 I will be fit to do the waist Instagram trend 📱</span>
+          </label>
+          <label class="term-item">
+            <input type="checkbox" class="term-checkbox" id="term3" onchange="checkAllTerms()">
+            <span class="term-text">✨ I'll invest in more skincare and get that glow ✨</span>
+          </label>
+          <label class="term-item">
+            <input type="checkbox" class="term-checkbox" id="term4" onchange="checkAllTerms()">
+            <span class="term-text">👗 I'll stop wearing kurtis and upgrade my wardrobe 🛍️</span>
+          </label>
+        </div>
+        <button
+          class="button terms-button"
+          id="acceptTerms"
+          onclick="acceptTerms()"
+          disabled
+        >
+          Accept All Terms 💖
+        </button>
+        <p class="terms-hint" id="termsHint">Check all boxes to proceed! 😉</p>
       </div>
     </div>
   </body>
