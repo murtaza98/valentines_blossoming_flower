@@ -28,7 +28,7 @@ Replace `image.jpeg` with your desired background image, ensuring the filename r
 ### 2️⃣ Modify the Text and Messages
 - Edit the main message inside **index.html** in the following section:
   ```html
-  <h1 class="headerText" id="wedate">Will You Be My Valentine, Babe? 🥺</h1>
+  <h1 class="headerText" id="wedate">Will You Be My Valentine, Sakina? 🥺</h1>
   ```
 - Update the response message when **Yes** is clicked:
   ```html
