@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("term2").checked = false;
         document.getElementById("term3").checked = false;
         document.getElementById("term4").checked = false;
+        document.getElementById("term5").checked = false;
         checkAllTerms();
     }, 100);
 }
@@ -110,19 +111,20 @@ function checkAllTerms() {
     const term2 = document.getElementById("term2").checked;
     const term3 = document.getElementById("term3").checked;
     const term4 = document.getElementById("term4").checked;
+    const term5 = document.getElementById("term5").checked;
     
     const acceptButton = document.getElementById("acceptTerms");
     const hint = document.getElementById("termsHint");
     
-    if (term1 && term2 && term3 && term4) {
+    if (term1 && term2 && term3 && term4 && term5) {
         acceptButton.disabled = false;
         hint.textContent = "Perfect! You're ready to proceed! 💖✨";
         hint.style.color = "#ff4f99";
         hint.style.fontWeight = "600";
     } else {
         acceptButton.disabled = true;
-        const checkedCount = [term1, term2, term3, term4].filter(Boolean).length;
-        hint.textContent = `Check all boxes to proceed! (${checkedCount}/4 checked) 😉`;
+        const checkedCount = [term1, term2, term3, term4, term5].filter(Boolean).length;
+        hint.textContent = `Check all boxes to proceed! (${checkedCount}/5 checked) 😉`;
         hint.style.color = "#999";
         hint.style.fontWeight = "400";
     }
@@ -158,8 +160,9 @@ function acceptTerms() {
     const term2 = document.getElementById("term2").checked;
     const term3 = document.getElementById("term3").checked;
     const term4 = document.getElementById("term4").checked;
+    const term5 = document.getElementById("term5").checked;
     
-    if (term1 && term2 && term3 && term4) {
+    if (term1 && term2 && term3 && term4 && term5) {
         const button = document.getElementById("acceptTerms");
         
         // Explode hearts from the button!
